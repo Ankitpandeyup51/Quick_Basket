@@ -17,21 +17,33 @@ To make everyday shopping simple, accessible, and convenient through technology.
 ==========================================================================================================================
 
 🛍️ Product Browsing — Explore available products.
+
 🔍 Product Search — Find products easily, if implemented.
+
 🛒 Shopping Cart — Manage selected items, if implemented.
+
 📦 Product Details — View product information.
+
 📱 User-Friendly Interface — Simple and intuitive navigation.
+
 ⚡ Convenient Experience — Designed for easy online shopping.
 
 🛠️ Tech Stack
 ===========================================================================================================================
 Technology	Purpose
+
 💜 .NET / ASP.NET Core	Application framework
+
 💻 C#	Backend programming
+
 🎨 HTML & CSS	User interface and styling
+
 ⚡ JavaScript	Interactive functionality
+
 🗄️ SQL Server	Database, if used
+
 🔧 Visual Studio	Development environment
+
 🌐 Git & GitHub	Version control
 
 🚀 Getting Started
@@ -80,12 +92,19 @@ Quick_Basket/
 ==========================================================================================================================
 
 ├── Controllers/       # Handles incoming requests
+
 ├── Models/            # Data and business models
+
 ├── Views/             # User interface pages
+
 ├── wwwroot/           # CSS, JavaScript and images
+
 ├── Properties/        # Launch settings
+
 ├── Program.cs         # Application entry point
+
 ├── appsettings.json   # Application configuration
+
 └── README.md          # Project documentation
 
 
