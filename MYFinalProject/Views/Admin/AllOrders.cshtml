@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "AllOrders";
+    Layout = "~/Views/Shared/_AdminLayoutPage1.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-10 mx-auto p-4">
+            <h2 class="fw-bold text-center">
+                all <span class="text-color1">Orders</span>
+            </h2>
+            <p class="text-center"> track, view manage all your order at one place</p>
+            <hr class="w-50 mx-auto" />
+            <button type="button" class="btn shadow  bg-color1 text-light">All Order(10)</button>
+            <button type="button" class="btn shadow btn-outline-dark">Processing(5)</button>
+            &nbsp;&nbsp;
+            <button type="button" class="btn shadow  btn-outline-dark">Out for delivery(5)</button>
+            &nbsp;&nbsp;
+            <button type="button" class="btn shadow btn-outline-dark">Delivered(3)</button>
+            &nbsp;&nbsp;
+            <button type="button" class="btn shadow  btn-outline-dark">Cancelled(3)</button>
+            @*order box*@
+            @foreach (var row in ViewBag.dt.Rows)
+            {
+                @*order box*@
+                <div class="row shadow-sm p-2 mb-5 bg-body-tertiary rounded mt-2 align-items-center ">
+                    <div class="col-sm-2">
+                        <span class="text-secondary small">Order ID</span><br />
+                        <span class="text-dark fw-medium ">@row["orderid"]</span>
+                    </div>
+                    <div class="col-sm-2">
+                        <span class="text-secondary small">Order Date</span><br />
+                        <span class="text-dark fw-medium ">@row["order_on"]</span>
+                    </div>
+                    <div class="col-sm-2">
+                        <span class="text-secondary small">Total Amount</span><br />
+                        <span class="text-dark fw-medium ">
+                            <i class="fa fa-indian-rupee"></i>
+                            @row["total"]
+                        </span>
+                    </div>
+                    <div class="col-sm-2">
+                        <span class="text-secondary small">Payment Method</span><br />
+                        <span class="text-dark fw-medium ">@row["payment_method"]</span>
+                    </div>
+                    <div class="col-sm-2">
+                        <span class="text-secondary small">Order Status</span><br />
+                        <span class="text-dark fw-medium ">@row["cur_status"]</span>
+                    </div>
+                    <din class="col-sm-2">
+                        <a href="/general/orderproducts?oid=@row["orderid"]">
+                            <button class="btn btn-outline-primary ">View Products<i class="fa fa-caret-down"></i></button>
+                        </a>
+                    </din>
+                    <div class="col-sm-12 alert alert-success mt-2 ">
+                        <span class="text-dark fw-bold">Order Status</span>
+                        <div class="row mb-2 border-bottom align-items-center ">
+                            <div class="col-sm-2">
+                                <span class="text-secondary small">Current Status</span><br />
+                                <span class="text-dark fw-medium ">@row["cur_status"]</span>
+                            </div>
+                            <div class="col-sm-2">
+                                <span class="text-secondary small">Order Placed On</span><br />
+                                <span class="text-dark fw-medium ">@row["order_on"]</span>
+                            </div>
+                            <div class="col-sm-2">
+                                <span class="text-secondary small">Order Accepted On</span><br />
+                                <span class="text-dark fw-medium ">@row["accept_on"]</span>
+                            </div>
+                            <div class="col-sm-2">
+                                <span class="text-secondary small">Out For Delivery</span><br />
+                                <span class="text-dark fw-medium ">@row["out_for_delivery"]</span>
+                            </div>
+                            <div class="col-sm-2">
+                                <span class="text-secondary small">Delivered On</span><br />
+                                <span class="text-dark fw-medium ">@row["deliver_on"]</span>
+                            </div>
+                            <div class="col-sm-2">
+                                <span class="text-secondary small">Expected Delivery Time</span><br />
+                                <span class="text-dark fw-medium ">@row["expected_delivery"]</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*order box end*@
+            }
+            @*order box end*@
+        </div>
+        </div>
+    </div>
+
+

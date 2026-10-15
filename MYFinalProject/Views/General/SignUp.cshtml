@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "SignUp";
+    Layout = "~/Views/Shared/_GeneralLayoutPage1.cshtml";
+}
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-7 mx-auto mt-3 shadow-sm p-5 mb-5 bg-body-tertiary rounded">
+            <div class="row">
+                <div class="col-sm-7">
+                    @*Registration Form Start*@
+                    <h1>Create Your Account</h1>
+                    <span class="small text-secondary">
+                        Create your account and Enjoy seamless shopping.
+                    </span>
+                    @if (TempData["msg"] != null)
+                    {
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>@TempData["msg"]</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+                    <form method="post">
+                        <br />
+                        <span class="text-dark fw-bold"> Full Name</span>
+                        <div class="form-floating mb-3 mt-1">
+                            <input type="text" required class="form-control" id="fullname" name="name" placeholder="Enter Your Name..">
+                            <label for="fullname">Name</label>
+                        </div>
+
+                        <span class="text-dark fw-bold"> Mobile No.</span>
+                        <div class="form-floating mb-3 mt-1">
+                            <input type="number" required class="form-control" id="mobile" name="mobile" placeholder="Enter Your Mobile No..">
+                            <label for="mobile">Mobile No.</label>
+                        </div>
+
+                        <span class="text-dark fw-bold"> Gender</span><br />
+                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" name="gender" value="Male" id="btnradio1" autocomplete="off" checked>
+                            <label class="btn btn-outline-primary" for="btnradio1"><i class="fa-solid fa-male"></i> Male</label>
+
+                            <input type="radio" class="btn-check" name="gender" value="Female" id="btnradio2" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="btnradio2"><i class="fa-solid fa-female"></i>Female</label>
+
+                            <input type="radio" class="btn-check" name="gender" value="Other" id="btnradio3" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="btnradio3"><i class="fa-solid fa-transgender"></i>Other</label>
+                        </div>
+                        <br />
+                        <br />
+                        <span class="text-dark fw-bold"> Email ID</span>
+                        <div class="form-floating mb-3 mt-1">
+                            <input type="email" required class="form-control" id="email" name="email" placeholder="Enter Your Email..">
+                            <label for="email">Email</label>
+                        </div>
+
+                        <button type="submit" class="btn bg-color1 text-light">Sign Up</button><br />
+                        <span class="text-secondary small">
+                            Are You Already Registerd?
+                            <a href="/general/login" class="text-color1" style="text-decoration:none">Click Here</a>
+                        </span>
+                    </form>
+                    @*Registration Form End*@
+                </div>
+                <div class="col-sm-5 alert alert-primary align-items-center p-4">
+                    @*Basic details start*@
+                    <img src="~/Content/images/33.jpeg" class="img-fluid" /><br /><br />
+                    <span class="mt-5 fs-5">Why Join QuickBasket?</span><br />
+                    <div class="d-flex gap-3 mt-4">
+                        <span class="alert alert-danger rounded-circle align-items-center justify-content-center" style="height:50px;width:50px;"><i class="fa-solid fa-tag"></i></span>
+                        <div>
+                            <span class="fw-bold">Best Deals</span><br />
+                            <span class="small text-secondary">Great Product in low Price.</span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-3 mt-4">
+                        <span class="alert alert-danger rounded-circle align-items-center justify-content-center" style="height:50px;width:50px;"><i class="fa-solid fa-truck"></i></span>
+                        <div>
+                            <span class="fw-bold">Fast Delivery</span><br />
+                            <span class="small text-secondary">Quick and reilable doorstep delivery.</span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-3 mt-4">
+                        <span class="alert alert-danger rounded-circle align-items-center justify-content-center" style="height:50px;width:50px;"><i class="fa-solid fa-headset"></i></span>
+                        <div>
+                            <span class="fw-bold">24/7 Support</span><br />
+                            <span class="small text-secondary">Friendly customer support anytime.</span>
+                        </div>
+                    </div>
+                    @*Basic details end*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,306 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/css/all.min.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Content/js/jquery-4.0.0.min.js"></script>
+    <style>
+        .theading {
+            font-size: 28px;
+            text-align: center;
+            padding: 5px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .text-color1 {
+            color: #F97316;
+        }
+
+        .bg-color1 {
+            background: #F97316;
+        }
+
+        .text-color2 {
+            color: #EA580C;
+        }
+
+        .bg-color2 {
+            background: #EA580C;
+        }
+
+        .menu ul li a {
+            font-size: 18px;
+        }
+
+            .menu ul li a:hover {
+                color: #2196F3;
+            }
+
+        .slider img {
+            height: 600px;
+        }
+
+        .shop span {
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        .shop a {
+            font-size: 15px;
+            text-decoration: none;
+            color: black;
+        }
+
+            .shop a:hover {
+                color: #2196F3;
+            }
+
+        .shop {
+            transition: 2s;
+        }
+
+            .shop:hover {
+                transition: 2s;
+                transform: scale(1.05);
+            }
+
+        .footer {
+            min-height: 300px;
+            background: black;
+        }
+
+        .featured span {
+            font-size: 10px;
+        }
+
+        .featured .fspan {
+            top: 10px;
+            left: 10px;
+            font-size: 13px !important;
+        }
+
+        .bg-grey {
+            background: #808080 !important;
+        }
+
+        .input-group-text {
+            height: 35px !important;
+            width: 35px !important;
+        }
+
+        .products.form-control {
+            height: 35px !important;
+            text-align: center;
+        }
+
+        .t.fa-brands {
+            color: #ee4f1e;
+            border: 1px solid #ee4f1e;
+            height: 28px;
+            width: 28px;
+            text-align: center;
+            line-height: 28px;
+            border-radius: 2px;
+            transition: all .8s;
+        }
+
+            .t .fa-brands:hover {
+                transform: rotate(360deg);
+                background: #ee41fe;
+                color: white;
+                transition: all .8s;
+            }
+
+        .t .fa-soli {
+            color: #ee4f1e;
+        }
+
+        .category-card {
+            transition: 0.4s ease;
+            overflow: hidden;
+        }
+
+            .category-card img {
+                height: 220px;
+                object-fit: cover;
+                transition: 0.4s;
+            }
+
+            .category-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 10px 25px rgba(0,0,0,.2) !important;
+            }
+
+                .category-card:hover img {
+                    transform: scale(1.08);
+                }
+
+        .card-body {
+            background: #f8f9fa;
+        }
+
+        .rownav {
+            background: linear-gradient(90deg,#C2410C 0%,#F97316 50%,#F9BA74 100%);
+        }
+
+        #navbarNav ul li a {
+            color: white;
+            font-family: 'Times New Roman',time,serif;
+            margin-right: 30px;
+        }
+
+        .btn:hover {
+            color: black !important;
+        }
+    </style>
+</head>
+<body>
+    @* HEADER SECTION *@
+    <div class="container-fluid">
+        @*top section*@
+        <div class="row py-2">
+            <div class="col-sm-10 mx-auto">
+                <div class="row align-items-center">
+                    <div class="col-sm-3 fs-3">
+                        Quick <b class="text-color1">
+                            Basket
+                            <i class="fa-solid fa-cart-arrow-down"></i>
+                        </b>
+                    </div>
+                    <div class="col-sm-3">
+                        <i class="fa-solid fa-phone-volume"></i>
+                        +91-9651380984
+                    </div>
+                    <div class="col-sm-3 soc">
+                        <a href="#"><i class="fa-brands fa-facebook fs-3 text-primary mx-2"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube fs-3 text-danger mx-2"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin fs-3 text-primary mx-2"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram fs-3 text-primary mx-2"></i></a>
+                        <a href="#"><i class="fa-brands fa-google fs-3 text-primary mx-2"></i></a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="/General/Cart" class="btn btn-outline-dark">
+                            <i class="fa-solid fa-cart-arrow-down "></i>
+                            Cart-Item
+                            <span id="cart" class="badge bg-dark ">@Session["cartitem"]</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*top section end*@
+        <div class="row rownav">
+
+            <div class="col-sm-10 menu mx-auto">
+                <nav class="navbar navbar-expand-lg">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link " aria-current="page" href="/General/Index">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/General/Products">All Products</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/General/Contact">Contact Us</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/General/FAQs">FAQs</a>
+                                </li>
+                                @if (Session["emailid"] == null)
+                                {
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/General/SignUp/">SignUp</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/General/Login">SignIn</a>
+                                </li>
+                                }
+                                else
+                                {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-solid fa-user"></i> Welcome, @Session["name"]
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item text-dark" href="/General/myorders">My Orders</a></li>
+                                        <li><a class="dropdown-item text-dark" href="/General/Address">Saved Address</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-dark" href="/General/ChangePassword">Change Password</a></li>
+                                        <li><a class="dropdown-item text-dark" href="/General/logout">LogOut</a></li>
+                                    </ul>
+                                </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        </div>
+        @* HEADER SECTION ENDS *@
+
+        <div>
+            @RenderBody()
+        </div>
+        @* FOOTER SECTION *@
+        <div class="container-fluid">
+            <div class="row footer bg-dark p-0">
+                <div class="col-sm-4 text-light">
+                    <h2 class="p-2">About Us</h2>
+                    <p>
+                        Welcome To Prime Cart your trusted online shopping destination.
+                        We bring you quality product at the best prices with a safe,fast,and hassle-free shopping experince
+                    </p>
+                </div>
+                <div class="col-sm-4 text-light">
+                    <h2 class="p-2">Quick Links</h2>
+                    <a href="g" class="fs-4">Home</a><br />
+                    <a href="g" class="fs-4">All Product</a><br />
+                    <a href="g" class="fs-4">Contact Us</a><br />
+                    <a href="g" class="fs-4">FAQ</a><br />
+                    <a href="g" class="fs-4">signUp</a><br />
+                    <a href="g" class="fs-4">SignIn</a><br />
+                </div>
+                <div class="col-sm-4 text-light">
+                    <h2 class="p-2">Address</h2>
+                    <p>
+                        PrimeCart Pvt.Ltd.<br />
+                        Shop No.24,Sunrise Business Center
+                        MG Road,Sector 10, Green City
+                        Lucknow, Uttar Pardesh-226010,India
+                    </p>
+                    <h4 class="my-4">Secial Media Icons :</h4>
+                    <a href="#"><i class="fa-brands fa-facebook fs-3 text-primary mx-2"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube fs-3 text-danger mx-2"></i></a>
+                    <a href="https://www.linkedin.com/in/ankit-kumar-pandey-1308b936b"><i class="fa-brands fa-linkedin fs-3 text-primary mx-2"></i></a>
+                    <a href="https://www.instagram.com/ankitpandey4621/"><i class="fa-brands fa-instagram fs-3 text-primary mx-2"></i></a>
+                    <a href="https://www.github.com/ankitpandeyup51"><i class="fa-brands fa-github fs-3 text-primary mx-2"></i></a>
+
+                </div>
+            </div>
+            @* FOOTER SECTION ENDS *@
+            
+                <div class="row  bg-dark text-light align-items-center" style="height:50px;">
+                    <div class="col-sm-12 px-4 ">
+                        <span class="float-start">&copy;2026 All right ruserved to <a href="https://www.techpile.in"class="text-decoration-none"target="_blank"> Techpile Technology</a></span>
+                        <span class="float-end">Developed and designed by <a class="text-decoration-none"href="/General/Developer">Er.Ankit Pandey</a></span>
+                    </div>
+                </div>
+            
+        </div>
+    </div>  
+</body>
+</html>
+<script src="~/Content/js/bootstrap.min.js"></script>
+<script src="~/Content/js/all.min.js"></script>
+<script src="~/Content/js/bootstrap.bundle.min.js"></script>
+
+

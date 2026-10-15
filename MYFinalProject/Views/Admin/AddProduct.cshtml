@@ -1,0 +1,121 @@
+﻿
+@{
+    ViewBag.Title = "AddProduct";
+    Layout = "~/Views/Shared/_AdminLayoutPage1.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row py-3">
+        <div class="col-sm-10 mx-auto">
+            <div class="fs-3 text-center">
+                Basket <b class="text-color1">Products</b><br />
+                <hr class="mx-auto w-25" />
+            </div>
+            <div class="row py-3">
+                <div class="col-sm-12 px-5">
+                    @if (TempData["msg"] != null)
+                    {
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>@TempData["msg"]</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="row shadow-lg mx-auto p-3 rounded-3">
+                            <div class="mb-2"> <span style="font-size:13px;"> Fil the details below create or update a category</span></div>
+                            <div class="col-sm-6">
+                                <span><b>Product Name</b></span>
+                                <input type="text" class="form-control mb-3" name="name" required placeholder="Enter Product Name" />
+                            </div>
+                            <div class="col-sm-6">
+                                <span><b>Choose Category</b></span>
+                                <select class="form-control mb-3" name="category" required>
+                                    @foreach (var cat in ViewBag.dt.Rows)
+                                    {
+                                        <option value="@cat["id"]">@cat["name"]</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <span><b>MRP</b></span>
+                                <input type="number" class="form-control mb-3" name="mrp" required placeholder="Enter Product MRP" />
+                            </div>
+                            <div class="col-sm-4">
+                                <span><b>Discount</b></span>
+                                <input type="number" class="form-control mb-3" name="discount" required placeholder="Enter Product Discount" />
+                            </div>
+                            <div class="col-sm-4">
+                                <span><b>Sale Rate</b></span>
+                                <input type="number" class="form-control mb-3" name="salerate" required placeholder="Enter Product Salerate" />
+                            </div>
+                            <div class="col-sm-6">
+                                <span><b>Product Brand</b></span>
+                                <input type="text" class="form-control mb-3" name="brand" required placeholder="Product Barnd Name" />
+                            </div>
+                            <div class="col-sm-6">
+                                <span><b>Product Quantity</b></span>
+                                <input type="text" class="form-control mb-3" name="quantity" required placeholder="1kg, 1Ltr, 100g" />
+                            </div>
+                            <div class="col-sm-6">
+                                <span><b>Product Picture*</b></span>
+                                <input type="file" class="form-control mb-3" name="pic" required placeholder="Enter catergory name" />
+                            </div>
+                            <div class="col-sm-6">
+                                <span><b>Product Expiry Date</b></span>
+                                <input type="date" class="form-control mb-3" name="expiry" required placeholder="Enter catergory name" />
+                            </div>
+                            <div class="col-sm-12">
+                                <span><b>Product Details</b></span>
+                                <textarea class="form-control" name="detail" required></textarea>
+                            </div>
+                            <div class="col-sm-6 mt-2">
+                                <button class="btn bg-color2" type="submit">Add Now</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-12">
+                    <div class="shadow-lg mx-auto p-3">
+                        <table class="table">
+                            <tr>
+                                <th>SR No.</th>
+                                <th>Product Name</th>
+                                <th>MRP</th>
+                                <th>Discount</th>
+                                <th>Salerate</th>
+                                <th>Brand</th>
+                                <th>Quantity</th>
+                                @*<th>Detail</th>*@
+                                <th>InStock</th>
+                                <th>Added On</th>
+                                <th>Expiry Date</th>
+                                <th>Product Image</th>
+                            </tr>
+                            @foreach(var row in ViewBag.p.Rows)
+            {
+                    <tr>
+                        <td>@row["id"]</td>
+                        <td>@row["name"]</td>
+                        <td>@row["mrp"]</td>
+                        <td>@row["discount"]</td>
+                        <td>@row["salerate"]</td>
+                        <td>@row["brand"]</td>
+                        <td>@row["quantity"]</td>
+                        @*<td>@(row["detail"].ToString().Substring(0,50))...</td>*@
+                        <td>@row["instock"]</td>
+                        <td>@row["added_on"]</td>
+                        <td>@row["expiry_date"]</td>
+                        <td><img src="~/Content/productpic/@row["image"]"
+                                 height="50px" width="50px"/></td>
+                    </tr>
+            }
+                          </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

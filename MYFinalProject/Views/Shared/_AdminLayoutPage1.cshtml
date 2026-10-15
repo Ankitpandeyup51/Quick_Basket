@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/css/all.min.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .rownav {
+            background: linear-gradient(90deg,#C2410C 0%,#F97316 50%,#F9BA74 100%);
+        }
+        .icon1 {
+            height: 50px;
+            width: 50px;
+            background: #ff6a00;
+            font-size: 18px !important;
+            padding: 10px;
+            border-radius: 100%;
+        }
+        .bg-color1 {
+            background: #ff6a00;
+        }
+        .text-color1 {
+            color: #F97316;
+        }
+
+        .bg-color3 {
+            background: #F97316;
+        }
+
+        .text-color2 {
+            color: #EA580C;
+        }
+
+        .bg-color2 {
+            background: #EA580C;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    @*Header start*@
+    <div class="container-fluid">
+        <div class="row rownav py-2">
+            <div class="col-sm-3 px-3 fs-3">
+                <a class="text-decoration-none text-dark px-5" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions">
+                    <i class="fa-solid fa-bars"></i>
+                    MENU
+                </a>
+            </div>
+            <div class="col-sm-6 fs-3 text-center">
+                Welcome to Admin Zone ! <i class="fa-solid fa-handshake"></i>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+        @*Header start end*@
+        @*left menu start*@
+
+        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+            <div class="offcanvas-header text-light bg-dark">
+                <h5 class="offcanvas-title  " id="offcanvasWithBothOptionsLabel">
+                    Quick <b class="text-color1"> Basket<i class="fa-solid fa-cart-arrow-down"></i></b>
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body text-light bg-dark">
+                <p class="  bg-light rounded-2 p-1"><a class="text-decoration-none text-dark " href="/Admin/Index" style="font-size:18px;"><i class="fa-solid fa-home"></i><b>Dashboard</b></a></p>
+                <p class=" bg-light rounded-2 p-1"><a class="text-decoration-none text-dark " href="/Admin/AddCategory" style="font-size:18px;"><i class="fa-solid fa-layer-group"></i>AddCategary</a></p>
+                <p class="  bg-light rounded-2 p-1"><a class="text-decoration-none text-dark " href="/Admin/AddProduct" style="font-size:18px;"><i class="fa-solid fa-box-open"></i>Add Product</a></p>
+                <p class=" bg-light rounded-2 p-1"><a class="text-decoration-none text-dark " href="/Admin/ManageCustomers" style="font-size:18px;"><i class="fa-solid fa-users"></i>Manage Customer</a></p>
+                <p class="  bg-light rounded-2 p-1"><a class="text-decoration-none text-dark " href="/Admin/ManageOrders" style="font-size:18px;"><i class="fa-solid fa-cart-shopping"></i>Manage Orders</a></p>
+                <p class=" bg-light rounded-2 p-1"><a class="text-decoration-none text-dark " href="/Admin/AllOrders" style="font-size:18px;"><i class="fa-solid fa-boxes-stacked"></i>Orders History</a></p>
+                <p class=" bg-light rounded-2 p-1"><a class="text-decoration-none text-dark " href="/Admin/manageenquiry" style="font-size:18px;"><i class="fa-solid fa-boxes-stacked"></i>Manage Enquiries</a></p>
+                <p class="  bg-light rounded-2 p-1"><a class="text-decoration-none text-dark " href="/Admin/Logout" style="font-size:18px;"><i class="fa-solid fa-right-from-bracket"></i>Logout</a></p>
+
+            </div>
+        </div>
+        @*left menu start end*@
+        <div>
+            @RenderBody()
+        </div>
+        
+
+            <div class="row  bg-dark text-light" style="height:50px;">
+                <div class="col-sm-12 px-5 py-2">
+                    <span class="float-start">&copy;2026 All right ruserved to<a>Techpile Technology</a></span>
+                    <span class="float-end">Developed and designed by Er.Ankit Pandey</span>
+                </div>
+            </div>
+
+        
+    </div>
+</body>
+</html>
+
+<script src="~/Content/js/bootstrap.min.js"></script>
+<script src="~/Content/js/all.min.js"></script>
+<script src="~/Content/js/bootstrap.bundle.min.js"></script>
+

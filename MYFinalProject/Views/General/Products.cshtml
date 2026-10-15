@@ -1,0 +1,164 @@
+﻿
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_GeneralLayoutPage1.cshtml";
+}
+
+@*@Heading Start *@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-10 mx-auto py-5">
+
+            <h2 class="fw-bold">
+                Shop Your Everyday <span class="text-color1">Essentials</span>
+            </h2>
+
+            <hr class="w-25 border-2">
+
+            <p class="text-muted mb-0">
+                Fresh Groceries, Delivered to Your Door.
+            </p>
+
+            <small class="text-secondary">
+                Shop farm-fresh fruits, vegetables, dairy, pantry essentials, and more—all at great prices.
+            </small>
+
+        </div>
+    </div>
+    @* Heading End *@
+
+    @* Product Start *@
+    <div class="row">
+        <div class="col-sm-10 mx-auto">
+            <div class="row">
+
+                <!-- Category -->
+                <div class="col-sm-3">
+                    <ul class="list-group shadow-sm">
+
+                        <li class="list-group-item bg-dark text-white fw-bold fs-5">
+                            Our Categories
+                        </li>
+
+                        @foreach (var row in ViewBag.cat.Rows)
+                        {
+                        <li class="list-group-item d-flex align-items-center">
+                         <a href="/general/products?catid=@row["id"]" style="text-decoration:none;color:black;">
+                             <img src="~/Content/catpic/@row["icon"]"
+                                  height="50"
+                                  width="50"
+                                  class="rounded border me-2" />
+                             <span class="fw-semibold">@row["name"]</span>
+                         </a>
+                        </li>
+                        }
+                    </ul>
+                </div>
+
+                <!-- Products -->
+                <div class="col-sm-9">
+                    <div class="row">
+
+                        @foreach (var row in ViewBag.p.Rows)
+                        {
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card h-100 shadow border-0 rounded-4">
+
+                                    <span class="badge bg-danger position-absolute top-0 end-0 m-2 px-3 py-2">
+                                        @row["brand"]
+                                    </span>
+
+                                    <img src="~/Content/productpic/@row["image"]"
+                                         class="card-img-top p-3"
+                                         style="height:220px;object-fit:cover;" />
+
+                                    <div class="card-body">
+
+                                        <h5 class="fw-bold">@row["name"]</h5>
+
+                                        <p class="mb-3">
+                                            <del class="text-secondary">
+                                                <i class="fa-solid fa-indian-rupee-sign"></i> @row["mrp"]
+                                            </del>
+                                            <span class="fw-bold text-success ms-2">
+                                                <i class="fa-solid fa-indian-rupee-sign"></i> @row["salerate"]
+                                            </span>
+                                            <br />
+                                            <span class="text-muted">Quantity : @row["quantity"]</span>
+                                        </p>
+
+                                        <div class="input-group mb-3">
+                                            <button type="button" class="btn btn-outline-dark"
+                                                    onclick="minus(@row["id"])">
+                                                <i class="fa-solid fa-minus"></i>
+                                            </button>
+
+                                            <input type="text"
+                                                   id="t_@row["id"]"
+                                                   value="@(string.IsNullOrEmpty(row["qty"].ToString()) ? 0 :row["qty"])"
+                                                   readonly
+                                                   class="form-control text-center qty">
+
+                                            <button type="button" class="btn btn-outline-dark"
+                                                    onclick="plus(@row["id"])">
+                                                <i class="fa-solid fa-plus"></i>
+                                            </button>
+                                        </div>
+
+                                        <a onclick="addtocart(@row["id"])" class="btn btn-success">
+                                            <i class="fa-solid fa-cart-shopping me-2"></i>
+                                            Add to Cart
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        <script>
+                            var i = 0;
+                            function plus(id) {
+                                i = document.getElementById("t_" + id).value;
+                                document.getElementById("t_" + id).value = parseInt(i) + 1;
+                            }
+                            function minus(id) {
+                                i = document.getElementById("t_" + id).value;
+                                if (i > 1) {
+                                    document.getElementById("t_" + id).value = parseInt(i) - 1;
+                                }
+                            }
+
+                            function addtocart(id) {
+                                // alert(id)
+                                i = document.getElementById("t_" + id).value;
+                                //alert(i)
+                                $.ajax({
+                                    url: '/general/addtocart',
+                                    type: 'get',
+                                    data: { 'pid': id, 'qty': i },
+                                    success: function (res) {
+                                        if (res == 0) {
+                                            alert('Login first to add product in your cart');
+                                            location.href = '/general/login';
+                                        }
+                                        else {
+                                            alert('Item added into cart');
+                                            document.getElementById("cart").innerText = res;
+                                        }
+                                    }
+                                })
+                            }
+
+
+                        </script>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@*Product End *@

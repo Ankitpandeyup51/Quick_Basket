@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "CheckOTP";
+    Layout = "~/Views/Shared/_GeneralLayoutPage1.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-7 mx-auto mt-3 shadow-sm p-5 mb-5 bg-body-tertiary rounded">
+            <div class="row">
+                <div class="col-sm-7">
+                    @*Login Form Start*@
+                    <h1>Verify OTP</h1>
+                    <span class="small text-secondary">
+                        OTP already sent to your registered EmailID. Verify That.
+                    </span>
+                    @if (TempData["msg"] != null)
+                    {
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>@TempData["msg"]</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+                    @Session["otp"]
+                    <form method="post">
+                        <br />
+                        <span class="text-dark fw-bold">Enter OTP</span><br />
+                        <span class="text-secondary">Kindly check your email @Session["email"] for OTP.</span>
+                        <div class="form-floating mb-3 mt-1">
+                            <input type="number" required class="form-control" id="otp" name="otp" placeholder="Enter Your OTP..">
+                            <label for="otp">OTP</label>
+                        </div>
+
+                        <button type="submit" class="btn bg-color1 text-light" style="width:100%;">Verify OTP</button><br />
+                        <div class="text-center">
+                            <span class="text-secondary small">
+                                Go To Login  ?
+                                <a href="/general/login" class="text-color1" style="text-decoration:none">Click Here</a>
+                            </span>
+                        </div>
+                    </form>
+                    @*Login Form End*@
+                </div>
+                <div class="col-sm-5 alert alert-primary align-items-center p-4">
+                    @*Basic Details Start*@
+                    <img src="~/Content/images/33.jpeg" class="img-fluid" /><br /><br />
+                    <span class="mt-5 fs-5">Why Login to QuickBasket?</span><br />
+                    <div class="d-flex gap-3 mt-4">
+                        <span class="alert alert-danger rounded-circle align-items-center justify-content-center" style="height:50px;width:50px;"><i class="fa-solid fa-rocket"></i></span>
+                        <div>
+                            <span class="fw-bold">Faster Cheakout</span><br />
+                            <span class="small text-secondary">Complete your purchases in just a few clicks.</span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-3 mt-4">
+                        <span class="alert alert-danger rounded-circle align-items-center justify-content-center" style="height:50px;width:50px;"><i class="fa-solid fa-heart"></i></span>
+                        <div>
+                            <span class="fw-bold">Saved Wishlist</span><br />
+                            <span class="small text-secondary">Access your favourite product anytime.</span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-3 mt-4">
+                        <span class="alert alert-danger rounded-circle align-items-center justify-content-center" style="height:50px;width:50px;"><i class="fa-solid fa-box-open"></i></span>
+                        <div>
+                            <span class="fw-bold">Track Orders</span><br />
+                            <span class="small text-secondary">View live order status and delivery updates.</span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-3 mt-4">
+                        <span class="alert alert-danger rounded-circle align-items-center justify-content-center" style="height:50px;width:50px;"><i class="fa-solid fa-gift"></i></span>
+                        <div>
+                            <span class="fw-bold">Exclusive Offers</span><br />
+                            <span class="small text-secondary">Get member-only discounts and special deals.</span>
+                        </div>
+                    </div>
+                    @*Basic Details End*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

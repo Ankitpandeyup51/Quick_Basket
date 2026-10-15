@@ -1,0 +1,165 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_GeneralLayoutPage1.cshtml";
+}
+
+
+<div class="container py-5">
+
+    <h2 class="fw-bold">
+        Contact<span class="text-color1">US</span>
+    </h2>
+    <p>
+        We're here to help! Send us your query and we'll get back to you.
+    </p>
+    <hr class="w-50" />
+
+    <div class="row g-4">
+
+        <!-- Contact Form -->
+        <div class="col-lg-8">
+            <form>
+            <div class="card shadow-sm border-0">
+                
+                <div class="card-body p-4">
+
+                    <h4 class="mb-4">
+                        <i class="fa-solid fa-comment text-warning"></i>
+                        Send us an Enquiry
+                    </h4>
+
+                    <div class="mb-3">
+                        <label class="form-label">Enquiry Type</label>
+                        <select class="form-select" name="Enquiry">
+                            <option disabled>Select Enquiry Type</option>
+                            <option value="General">General</option>
+                            <option value="Order">Order</option>
+                            <option value="Complaint">Complaint</option>
+                        </select>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+                            <label>Full Name</label>
+                            <input type="text" class="form-control" name="Fname">
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label>Email Address</label>
+                            <input type="email" class="form-control" name="Email">
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Mobile Number</label>
+                        <input type="number" class="form-control" name="Mobile">
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Subject</label>
+                        <input type="text" class="form-control" name="Subject">
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Message</label>
+                        <textarea class="form-control" rows="5" name="Message"></textarea>
+                    </div>
+
+                    <button class="btn btn-warning px-4" type="submit">
+                        Send Enquiry
+                    </button>
+
+                </div>
+            </div>
+</form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="col-lg-4">
+
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+
+                    <h4 class="text-warning mb-4">
+                        Get in Touch
+                    </h4>
+
+                    <p>
+                        <i class="fa-solid fa-headset text-warning"></i>
+                        Monday - Saturday<br>
+                        9:00 AM - 7:00 PM
+                    </p>
+
+                    <hr>
+
+                    <p>
+                        <i class="fa-solid fa-phone text-warning"></i>
+                        <strong>Phone</strong><br>
+                        +91 9651380984
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-envelope text-warning"></i>
+                        <strong>Email</strong><br>
+                        support@quickbasket.com
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-location-dot text-warning"></i>
+                        <strong>Address</strong><br>
+                        Techpile Technology Pvt Ltd<br>
+                        Lucknow, Uttar Pradesh
+                    </p>
+
+                </div>
+            </div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.161301648797!2d80.96384467522381!3d26.89837547665573!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39995785d5f7f1a5%3A0xffa47f1efe103f0d!2sTechpile%20Technology%20Private%20Limited!5e0!3m2!1sen!2sin!4v1785564065170!5m2!1sen!2sin" class="w-100" height="230" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+
+
+
+        </div>
+
+    </div>
+
+    <!-- Bottom Features -->
+
+    <div class="row text-center mt-5 g-3">
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card border-0 shadow-sm p-4">
+                <i class="fa-solid fa-shield-halved fs-1 text-warning"></i>
+                <h5>Secure & Safe</h5>
+                <p>Your information is protected.</p>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card border-0 shadow-sm p-4">
+                <i class="fa-solid fa-clock fs-1 text-warning"></i>
+                <h5>Quick Response</h5>
+                <p>Reply within 24 Hours.</p>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card border-0 shadow-sm p-4">
+                <i class="fa-solid fa-star fs-1 text-warning"></i>
+                <h5>Customer First</h5>
+                <p>Your satisfaction is our priority.</p>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card border-0 shadow-sm p-4">
+                <i class="fa-solid fa-thumbs-up fs-1 text-warning"></i>
+                <h5>Reliable Support</h5>
+                <p>We're always here to help.</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>

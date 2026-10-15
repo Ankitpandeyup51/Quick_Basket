@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "orderproducts";
+    Layout = "~/Views/Shared/_GeneralLayoutPage1.cshtml";
+}
+
+
+<!-- Heading -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-10 mx-auto py-2">
+            <h2 class="fw-bold">
+                Detail Of Product For Order Id : <span class="text-color1">
+                @Request.QueryString["oid"]</span>
+            </h2>
+
+            <p class="text-muted">
+               Details of products included in a particular order
+            </p>
+
+            <hr class="w-25 border-3 border-success">
+        </div>
+    </div>
+
+    <!-- Cart -->
+    <div class="row py-4">
+        <div class="col-sm-10 mx-auto">
+
+            <table class="table table-bordered table-hover align-middle shadow">
+
+                <thead class="table-dark text-center">
+                    <tr>
+                        <th>Sr No</th>
+                        <th>Picture</th>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>MRP</th>
+                        <th>Discount</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+
+                <tbody class="text-center">
+                    @{ int bill = 0;}
+
+                    @if (ViewBag.dt.Rows.Count > 0)
+                    {
+                        foreach (var row in ViewBag.dt.Rows)
+                        {
+                            <tr>
+                                <td class="fw-bold">@row["cartid"]</td>
+                                <td>
+                                    <img src="~/Content/productpic/@row["productimage"]"
+                                         height="80"
+                                         width="80"
+                                         class="img-thumbnail rounded">
+                                </td>
+                                <td class="fw-bold">@row["productname"]</td>
+
+                                <td>@row["qty"]</td>
+
+                                <td class="text-success fw-bold">
+                                    <i class="fa-solid fa-inr"></i> @row["mrp"]
+                                </td>
+
+                                <td class="text-danger fw-bold">
+                                    <i class="fa-solid fa-inr"></i> @row["discount"]
+                                </td>
+
+                                <td class="text-danger fw-bold">
+                                    <i class="fa-solid fa-inr"></i> @row["price"]
+                                </td>
+
+                                <td class="text-danger fw-bold">
+                                    <i class="fa-solid fa-inr"></i> @row["totalprice"]
+                                </td>
+                                <td>
+                                    <a href="?cartid=@row["cartid"]" class="btn btn-sm btn-danger rounded-pill">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </td>
+
+                            </tr>
+                            bill = bill + Convert.ToInt32(row["totalprice"]);
+                        }
+                    }
+                    else
+                    {
+                        <p>NO PRODUCT ADDED IN CART</p>
+                    }
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+    </div>
+
+

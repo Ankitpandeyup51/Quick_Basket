@@ -1,0 +1,159 @@
+﻿
+
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_GeneralLayoutPage1.cshtml";
+}
+
+
+<!-- Heading -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-10 mx-auto py-2">
+            <h2 class="fw-bold">
+                Shopping <span class="text-color1">Cart</span>
+            </h2>
+
+            <p class="text-muted">
+                Review your selected items before checkout.
+            </p>
+
+            <hr class="w-25 border-3 border-success">
+        </div>
+    </div>
+
+    <!-- Cart -->
+    <div class="row py-4">
+        <div class="col-sm-10 mx-auto">
+
+            <table class="table table-bordered table-hover align-middle shadow">
+
+                <thead class="table-dark text-center">
+                    <tr>
+                        <th>Sr No</th>
+                        <th>Picture</th>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>MRP</th>
+                        <th>Discount</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+
+                <tbody class="text-center">
+                    @{  int bill = 0;}
+
+                    @if (ViewBag.dt.Rows.Count>0)
+                    {
+                        foreach(var row in ViewBag.dt.Rows)
+                        {
+                    <tr>
+                        <td class="fw-bold">@row["cartid"]</td>
+                        <td>
+                            <img src="~/Content/productpic/@row["productimage"]"
+                                 height="80"
+                                 width="80"
+                                 class="img-thumbnail rounded">
+                        </td>
+                        <td class="fw-bold">@row["productname"]</td>
+
+                        <td>@row["qty"]</td>
+
+                        <td class="text-success fw-bold">
+                            <i class="fa-solid fa-inr"></i> @row["mrp"]
+                        </td>
+
+                        <td class="text-danger fw-bold">
+                            <i class="fa-solid fa-inr"></i> @row["discount"]
+                        </td>
+
+                        <td class="text-danger fw-bold">
+                            <i class="fa-solid fa-inr"></i> @row["price"]
+                        </td>
+
+                        <td class="text-danger fw-bold">
+                            <i class="fa-solid fa-inr"></i> @row["totalprice"]
+                        </td>
+                        <td>
+                            <a href="?cartid=@row["cartid"]" class="btn btn-sm btn-danger rounded-pill">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </td>
+                       
+                    </tr>
+                            bill = bill + Convert.ToInt32(row["totalprice"]);
+                        }
+                    }
+                    else
+                    {
+                    <p>NO PRODUCT ADDED IN CART</p>
+            }
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+    <!-- Address Section -->
+    <div class="row py-3">
+        <div class="col-sm-10 mx-auto">
+
+            <div class="card shadow border-0">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">
+                        <i class="fa-solid fa-location-dot"></i>
+                        Select Delivery Address & Checkout
+                    </h5>
+                </div>
+                <form method="post">
+                    @if (ViewBag.add.Rows.Count > 0)
+                    {
+                        foreach (var a in ViewBag.add.Rows)
+                        {
+
+                            <div class="card-body">
+                                <div class="form-check border rounded p-3 mb-3">
+                                    <input class="form-check-input mt-2"
+                                           type="radio"
+                                           name="address"
+                                           id="add1" value="@a["id"]"
+                                           checked>
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <h6 class="fw-bold mb-1">
+                                                @a["fulladdress"]
+                                            </h6>
+                                            <p class="mb-1 text-muted">
+                                                @a["city"]  @a["state"]  @a["pincode"]
+                                            </p>
+                                            <p class="mb-1 text-muted">
+                                                Landmark : @a["landmark"]
+                                            </p>
+
+                                            <span class="badge bg-success">
+                                                @a["addresstype"]
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                    }
+                    else
+                    {
+                        <p>You haven't added any address till now. Without Address you can not checkout. Kindly<a href="/general/address"> click here</a> to add address.</p>
+                    }
+                    <div class="card p-2">
+                        <span class="text-start fs-4 text-success">Total Bill : <i class="fa-solid fa-inr"></i> @bill /-  </span>
+                        <input type="hidden" value="@bill" name="total" />
+                        <span class="text-end"><button class="btn btn-success w-25 text-light" type="submit">CheckOut</button></span>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

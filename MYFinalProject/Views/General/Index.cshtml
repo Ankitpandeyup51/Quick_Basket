@@ -1,0 +1,334 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_GeneralLayoutPage1.cshtml";
+}
+
+<div class="container-fluid">
+    @*Slider Start*@
+
+    <div class="row py-5" style="background:#E2F4E9;">
+        <div class="col-sm-10 mx-auto">
+            <div class="row">
+                <div class="col-sm-9 px-4">
+                    <div class="fs-1">
+                        Save More On <b class="text-color-1"> Every Grocery Order</b>
+                    </div>
+                    <div class="text-justify ">Experience the joy of farm-fresh fruits and vegetables delivered straight to your doorstep. We carefully source every item to ensure maximum freshness, great taste, and premium quality. Shop seasonal produce, leafy greens, and healthy essentials at affordable prices, making every meal nutritious and delicious for your family.</div><br />
+                    <a href="/General/Products/" class="btn btn-dark">Explore All Product</a>
+                </div>
+                <div class="col-sm-3">
+                    @*Slider Box Start*@
+                    <div id="carouselExample" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" data-bs-interval="2000">
+                                <img src="~/Content/images/best-offers/offer-1.jpg" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item" data-bs-interval="3000">
+                                <img src="~/Content/images/best-offers/offer-2.jpg" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item" data-bs-interval="2000">
+                                <img src="~/Content/images/best-offers/offer-3.jpg" class="d-block w-100" alt="...">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    @*Slider Box d*@
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*Slider End*@
+
+    @*Heading Start*@
+    <div class-="row">
+        <div class="col-sm-10 mx-auto py-5">
+            <div class="fs-3">Explore Our <b class="text-color1">Top Categories</b></div>
+            <hr class="w-50" />
+            Discover handpicked categories designed to inspire and delight.
+        </div>
+    </div>
+    @*Heading End*@
+    @*Category Section Start*@
+    <div class="row pb-5">
+        <div class="col-sm-10 mx-auto">
+            <div class="row">
+                @foreach (var c in ViewBag.cat.Rows)
+                {
+                    @* category box*@
+                <div class="col-sm-2">
+                    <a href="/general/products?catid=@c["id"]" style="text-decoration:none;color:black;">
+                        <div class="card shadow-lg text-center p-2">
+                            <center>   <img src="~/Content/catpic/@c["icon"]" class="card-img-top w-75" /></center>
+                            <div class="card-body text-center">
+                                <span class="fs-6">@c["name"]</span>
+                            </div>
+                        </div>
+                        </a>
+                </div>
+                    @* category box end *@
+                }
+            </div>
+        </div>
+    </div>
+    @*Category Section End*@
+
+
+    @*Top Offered Product Start*@
+    @* Heading Start *@
+    <div class="row" style="background:rgb(253,247,234);">
+        <div class="col-sm-10 mx-auto py-5">
+            <div class="fs-3">
+                Top Offers Just <b class="text-success">for you</b>
+            </div>
+            <hr class="w-50" />
+            <p>
+                Shop farm-fresh fruits, vegetables, dairy, pantry essentials,
+                and more—all at great prices.
+            </p>
+        </div>
+    </div>
+
+    @* Product Section *@
+    <div class="row pb-5" style="background:rgb(253,247,234);">
+        <div class="col-sm-10 mx-auto">
+            <div class="row">
+
+                @foreach (var row in ViewBag.p.Rows)
+                {
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 shadow border-0 rounded-4">
+
+                            <span class="badge bg-danger position-absolute top-0 end-0 m-2 px-3 py-2">
+                                @row["brand"]
+                            </span>
+
+                            <img src="~/Content/productpic/@row["image"]"
+                                 class="card-img-top p-3"
+                                 style="height:220px;object-fit:cover;" />
+
+                            <div class="card-body">
+
+                                <h5 class="fw-bold">@row["name"]</h5>
+
+                                <p class="mb-3">
+                                    <del class="text-secondary">
+                                        <i class="fa-solid fa-indian-rupee-sign"></i> @row["mrp"]
+                                    </del>
+                                    <span class="fw-bold text-success ms-2">
+                                        <i class="fa-solid fa-indian-rupee-sign"></i> @row["salerate"]
+                                    </span>
+                                    <br />
+                                    <span class="text-muted">Quantity : @row["quantity"]</span>
+                                </p>
+
+                                <div class="input-group mb-3">
+                                    <button type="button" class="btn btn-outline-dark"
+                                            onclick="minus(@row["id"])">
+                                        <i class="fa-solid fa-minus"></i>
+                                    </button>
+
+                                    <input type="text"
+                                           id="t_@row["id"]"
+             value="@(string.IsNullOrEmpty(row["qty"].ToString()) ? 0 :row["qty"])"
+                                           readonly
+                                           class="form-control text-center qty">
+
+                                    <button type="button" class="btn btn-outline-dark"
+                                            onclick="plus(@row["id"])">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </button>
+                                </div>
+
+                                <a onclick="addtocart(@row["id"])" class="btn btn-success">
+                                    <i class="fa-solid fa-cart-shopping me-2"></i>
+                                    Add to Cart
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+    @*Product Box End*@
+    
+</div>
+
+
+@*Top Offered Product End*@
+
+@*CTA Start*@
+<div class="row py-5 bg-color1">
+    <div class="col-sm-10 mx-auto">
+        <div class="row">
+            <div class="col-sm-8 text-light">
+                <b>Don't Miss Today's Best Deals</b><br />
+                Enjoy the convenience of shopping for fresh fruits, vegetables, dairy products, snacks, beverages, and daily essentials from the comfort of your home. We deliver high-quality groceries quickly, ensuring freshness, affordability, and a hassle-free shopping experience.
+            </div>
+            <div class="col-sm-2 pt-4">
+                <a href="tel:+91 9651380984" class="btn btn-dark"><i class="fa-solid fa-phone"></i>Call Now</a>
+            </div>
+            <div class="col-sm-2 pt-4">
+                <a href="/general/products/" class="btn btn-dark"><i class="fa-solid fa-cart-flatbed"></i>Explore All Products</a>
+            </div>
+        </div>
+    </div>
+</div>
+@*CTA End*@
+
+@*Shop Section Start*@
+<div class="row py-3">
+    <div class="col-sm-10 mx-auto">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="row shadow-lg mx-auto p-3 shop rounded-2">
+                    <div class="col-7">
+                        <b>Explore different Brand grocery</b><br />
+                        <span>Up to 90% off</span><br />
+                        <a href="#">Shop More<i class="fa-solid fa-arrow-right"></i></a><br />
+                    </div>
+                    <div class="col-5">
+                        <img src="~/Content/images/product/img-4.jpg" class="w-100" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="row shadow-lg mx-auto p-3 shop rounded-2">
+                    <div class="col-7">
+                        <b>Explore different Brand grocery</b><br />
+                        <span>Up to 90% off</span><br />
+                        <a href="#">Shop More<i class="fa-solid fa-arrow-right"></i></a><br />
+                    </div>
+                    <div class="col-5">
+                        <img src="~/Content/images/product/img-5.jpg" class="w-100" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="row shadow-lg mx-auto p-3 shop rounded-2">
+                    <div class="col-7">
+                        <b>Explore different Brand grocery</b><br />
+                        <span>Up to 90% off</span><br />
+                        <a href="#">Shop More<i class="fa-solid fa-arrow-right"></i></a><br />
+                    </div>
+                    <div class="col-5">
+                        <img src="~/Content/images/product/img-6.jpg" class="w-100" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*Shop Section End*@
+@*Features Product Start*@
+@*Features Product End*@
+@*Why Section Start*@
+<div class="row py-3 why">
+    <div class="col-sm-10 mx-auto">
+        <div class="row">
+
+            <!-- Free Shipping -->
+            <div class="col-sm-3 border-end">
+                <div class="row align-items-center">
+                    <div class="col-3">
+                        <i class="fas fa-truck p-3 fs-5 rounded-circle text-light bg-dark"></i>
+                    </div>
+                    <div class="col-9">
+                        <b>Free Shipping</b><br />
+                        On orders above ₹199
+                    </div>
+                </div>
+            </div>
+
+            <!-- Best Quality -->
+            <div class="col-sm-3 border-end">
+                <div class="row align-items-center">
+                    <div class="col-3">
+                        <i class="fas fa-award p-3 fs-5 rounded-circle text-light bg-dark"></i>
+                    </div>
+                    <div class="col-9">
+                        <b>Premium Quality</b><br />
+                        Carefully selected products
+                    </div>
+                </div>
+            </div>
+
+            <!-- Secure Payment -->
+            <div class="col-sm-3 border-end">
+                <div class="row align-items-center">
+                    <div class="col-3">
+                        <i class="fas fa-lock p-3 fs-5 rounded-circle text-light bg-dark"></i>
+                    </div>
+                    <div class="col-9">
+                        <b>Secure Payment</b><br />
+                        100% Safe & Secure Checkout
+                    </div>
+                </div>
+            </div>
+
+            <!-- Support -->
+            <div class="col-sm-3">
+                <div class="row align-items-center">
+                    <div class="col-3">
+                        <i class="fas fa-headset p-3 fs-5 rounded-circle text-light bg-dark"></i>
+                    </div>
+                    <div class="col-9">
+                        <b>Customer Support</b><br />
+                        Friendly support when you need it
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>@*Why Section End*@
+
+
+
+<script>
+    var i = 0;
+    function plus(id) {
+        i = document.getElementById("t_" + id).value;
+        document.getElementById("t_" + id).value = parseInt(i) + 1;
+    }
+    function minus(id) {
+        i = document.getElementById("t_" + id).value;
+        if (i > 1) {
+            document.getElementById("t_" + id).value = parseInt(i) - 1;
+        }
+    }
+
+    function addtocart(id) {
+       // alert(id)
+        i = document.getElementById("t_" + id).value;
+        //alert(i)
+        $.ajax({
+            url: '/general/addtocart',
+            type: 'get',
+            data: { 'pid': id, 'qty': i },
+            success: function (res) {
+                if (res == 0) {
+                    alert('Login first to add product in your cart');
+                    location.href = '/general/login';
+                }
+                else {
+                    alert('Item added into cart');
+                    document.getElementById("cart").innerText = res;
+                }
+            }
+        })
+    }
+
+   
+</script>
