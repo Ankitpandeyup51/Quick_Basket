@@ -142,7 +142,9 @@ Made with ❤️ by Ankit Pandey
 
 #💻 Navbar
 
-==============================================================================<img width="959" height="539" alt="Screenshot 2026-10-15 091000" src="https://github.com/user-attachments/assets/8eee8b7b-a7e4-4f2b-ac13-b2d9509bb405" />
+==============================================================================
+
+<img width="959" height="539" alt="Screenshot 2026-10-15 091000" src="https://github.com/user-attachments/assets/8eee8b7b-a7e4-4f2b-ac13-b2d9509bb405" />
 
 #💻 Every Grocery Order
 ==============================================================================
